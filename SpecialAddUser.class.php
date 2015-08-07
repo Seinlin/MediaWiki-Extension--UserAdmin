@@ -266,7 +266,8 @@ EOT;
     if(empty($this->email))
       throw new InvalidPOSTParamException(wfMsg('uadm-fieldisrequiredmsg',$this->emailfield));
 
-    if(!User::isValidEmailAddr($this->email))
+    //if(!User::isValidEmailAddr($this->email))
+    if(!Sanitizer::validateEmail($this->email))
       throw new InvalidPOSTParamException(wfMsg('uadm-invalidemailmsg',$this->emailfield));
 
     if(empty($this->pwdaction))
